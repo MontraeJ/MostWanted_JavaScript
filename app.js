@@ -15,19 +15,23 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+      searchResults = searchByTraits(people);
       break;
       default:
-    app(people); // restart app
+    app(data); // restart app
       break;
   }
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
+  mainMenu(searchResults, people);{
+
+  }
 }
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
+
+
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
@@ -36,7 +40,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch(displayOption){
     case "info":
@@ -49,7 +53,7 @@ function mainMenu(person, people){
     // TODO: get person's descendants
     break;
     case "restart":
-    app(people); // restart
+    app(data); // restart
     break;
     case "quit":
     return; // stop execution
@@ -84,9 +88,23 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color", autoValid);
 
+  let foundEyeColor = people.filter(function(potentialEyeColorMatch){
+    if(potentialEyeColorMatch.eyeColor === eyeColor){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  displayPeople(foundEyeColor)
+return foundEyeColor;
 }
 
+function searchByTraits(people){
+  let seachResults = searchByEyeColor(people)
+}
 //TODO: add other trait filter functions here.
 
 
@@ -110,6 +128,15 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Gender: " + person.gender;
+  personInfo += "Date of Birth: " + person.dateOfBirth;
+  personInfo += "Height: " + person.height;
+  personInfo  += "Weight: " + person.weight;
+  personInfo += "Eye Color: " + person.eyeColor;
+  personInfo += "Occupation: " + person.occupation;
+  personInfo += "Parents: " + person.parents;
+  personInfo += "Current Spouse: " + person.currentSpouse;
+
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
