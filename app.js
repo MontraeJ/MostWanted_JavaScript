@@ -128,14 +128,14 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo += "Gender: " + person.gender;
-  personInfo += "Date of Birth: " + person.dateOfBirth;
-  personInfo += "Height: " + person.height;
-  personInfo  += "Weight: " + person.weight;
-  personInfo += "Eye Color: " + person.eyeColor;
-  personInfo += "Occupation: " + person.occupation;
-  personInfo += "Parents: " + person.parents;
-  personInfo += "Current Spouse: " + person.currentSpouse;
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "Date of Birth: " + person.dateOfBirth + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo  += "Weight: " + person.weight + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Parents: " + person.parents + "\n";
+  personInfo += "Current Spouse: " + person.currentSpouse + "\n";
 
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
