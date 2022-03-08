@@ -103,10 +103,70 @@ return foundEyeColor;
 }
 
 function searchByTraits(people){
-  let seachResults = searchByEyeColor(people)
+  let seachResults = searchByEyeColor(people) && searchByGender(people) && searchByDOB(people) && searchByHeight(people) && searchByWeight(people)
 }
 //TODO: add other trait filter functions here.
+function searchByGender(people){
+  let gender = promptFor("What is the person's gender", autoValid);
 
+ let foundGender = people.filter(function(potentialGenderMatch){
+   if(potentialGenderMatch.gender === gender){
+     return true;
+   }
+   else{
+     return false;
+   }
+ })
+ displayPeople(foundGender)
+return foundGender; 
+} 
+
+function searchByDOB(people){
+  let dateOfBirth = promptFor("What is the person's date of birth?", autoValid);
+
+  let foundDOB = people.filter(function(potentialDateOfBirth){
+    if(potentialDateOfBirth.dateOfBirth === dateOfBirth){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  displayPeople(foundDOB)
+  return foundDOB;
+}
+
+function searchByHeight(people){
+  let height = promptFor("What is the person's height?", autoValid);
+
+  let foundHeight = people.filter(function(potentialHeight){
+    if(potentialHeight.height === height){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  displayPeople(foundHeight)
+  return foundHeight;
+}
+
+function searchByWeight(people){
+  let weight = promptFor("What is the person's weight?", autoValid);
+
+  let foundWeight = people.filter(function(potentialWeight){
+    if(potentialWeight.weight === weight){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  displayPeople(foundWeight)
+  return foundWeight;
+}
+// function searchByTraits(people){
+//   let searchResults = searchByGender(people)
 
 
 //#endregion
